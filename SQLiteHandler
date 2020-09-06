@@ -57,6 +57,9 @@ public class SQLiteHandler {
     }
 
 
+///////
+//Call this onEnable() "load()"
+/////////
     public void load() {
         connection = getSQLConnection();
         try {
