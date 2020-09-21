@@ -27,6 +27,23 @@ public class SQLiteHandler {
         this.sqlDefaultStatement = sqlDefaultStatement;
         this.table=table;
     }
+    
+    
+    /*
+        An example on how to use the constructor
+        
+        private SQLiteHandler sqLiteHandler = new SQLiteHandler(this.getDataFolder(),"chunkHoppers","chunkHoppers",
+            "CREATE TABLE IF NOT EXISTS chunkHoppers (" +
+                    "`uuid` INTEGER PRIMARY KEY," +
+                    "`world` varchar(50) NOT NULL," +
+                    "`x` INT NOT NULL," +
+                    "`y` INT NOT NULL," +
+                    "`z` INT NOT NULL" +
+                    ");"
+            );
+        
+        
+    */
 
 
     public Connection getSQLConnection() {
@@ -105,6 +122,8 @@ public class SQLiteHandler {
         }
     }
 
+
+        //A method returning all entry's in the database,in this case used to get hoppers locations
     public List<Block> getAllHoppers(){
         List<Block> toReturn = new ArrayList<>();
         Connection conn = null;
@@ -139,7 +158,7 @@ public class SQLiteHandler {
         return toReturn;
     }
 
-    //Add
+    //Add method
     public void addHopper(Block toAdd){
         Location loc = toAdd.getLocation();
         Connection conn = null;
@@ -159,7 +178,7 @@ public class SQLiteHandler {
             close(ps,conn);
         }
     }
-    //Remove
+    //Remove method
     public void removeHopper(Block toRemove){
         Location loc = toRemove.getLocation();
         Connection conn = null;
